@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FSWO102-JS - Hands-On Day One</title>
+  <link href="https://fonts.googleapis.com/css?family=Anton|Roboto:400,700,900" rel="stylesheet">
+
+  <style type="text/css">
+    body {
+      background-color: #f9f9f9;
+      margin: 0;
+      font-family: sans-serif;
+    }
+    header {
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 1px 2px rgba(0,0,0,.08);
+      margin-bottom: 30px;
+      padding: 10px 0;
+      font-family: 'Anton', sans-serif;
+    }
+    h1 {
+      margin: 0;
+      padding: 0;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #563d7c;
+        font-size: 40px;
+    }
+    
+    div {
+      max-width: 500px;
+      text-align: center;
+      margin: 200px auto;
+      padding: 60px;
+      background-color: #fff;
+      box-shadow: 0 0 50px rgba(0,0,0,.1);
+    }
+    label {
+      display: block;
+      font-size: 40px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 900;
+      color: #17a2b8;
+    }
+    input {
+      padding: 10px;
+      border: 1px solid #ddd;
+      width: 200px;
+      background-color: #f9f9f9;
+      font-size: 30px;
+      text-align: center;
+      font-family: 'Roboto', sans-serif;
+    }
+    input:focus {
+      background-color: yellow;
+      outline: none;
+    }
+    h2 {
+      /*display: none;*/
+      font-size: 80px;
+      margin: 30px 0 0 0;
+      padding: 0;
+    }
+    span {
+      background-color: #868e96;
+      color: #fff;
+      width: 100px;
+      height: 100px;
+      display: inline-block;
+      line-height: 100px;
+      text-align: center;
+      border-radius: 50px;
+    }
+    
+    @media screen and (max-width: 768px) {
+      h1 {
+        font-size: 24px;
+      }
+      div {
+        margin: 80px auto;
+        padding: 50px;
+      }
+      label {
+        font-size: 30px;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Academic Grading System</h1>
+  </header>
+  <div>
+    <label for="grade">Enter a number: </label>
+    <input type="number" min="0" max="100" id="grade" />
+    <h2><span id="results">?</span></h2>
+  </div>  
+  <script>
+  
+    let grade = document.querySelector('#grade');
+    
+    const calcGrade = () => {
+      let output;
+      let results = document.querySelector('#results');
+
+      results.parentNode.style.display = 'block';
+      
+      
+      if( grade.value >= 90 ) {
+        output = 'A';
+        results.style.backgroundColor = '#28a745';
+      } else if( grade.value >= 80 ) {
+        output = 'B';
+        results.style.backgroundColor = '#007bff';
+      } else if( grade.value >= 70 ) {
+        output = 'C';
+        results.style.backgroundColor = '#fd7e14';
+      } else if( grade.value >= 60 ) {
+        output = 'D';
+        results.style.backgroundColor = '#ffc107';
+      } else {
+        output = 'F';
+        results.style.backgroundColor = '#dc3545';
+      }
+      
+      results.innerHTML = output;
+    }
+    
+    grade.addEventListener('change', calcGrade);
+    grade.addEventListener('keydown', calcGrade);
+  </script>
+</body>
+</html>
